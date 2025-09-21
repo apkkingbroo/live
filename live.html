@@ -1,181 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>apkmodderkings — Live Sports Hindi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darkbrower</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin:0;
+    font-family:'Roboto', sans-serif;
+    background:#181818;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+  }
 
-  <style>
-    :root {
-      --bg: #0b0e17;
-      --primary: #0088cc; /* Telegram blue */
-      --text: #ffffff;
-      --muted: #9aa3b2;
-      --card: #1a1f2f;
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-    header {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:15px;
-      background: var(--primary);
-      font-size:22px;
-      font-weight:bold;
-      letter-spacing:0.5px;
-      box-shadow:0 4px 20px rgba(0,0,0,0.5);
-    }
-    header img {
-      width:26px;
-      height:26px;
-    }
-    .app {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 10px;
-    }
-    .video-wrap {
-      border-radius: 12px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-    }
-    .poster {
-      width: 100%;
-      display:block;
-    }
-    .controls {
-      display:flex;
-      justify-content:center;
-      gap:15px;
-      margin:20px 0;
-    }
-    .btn {
-      padding:12px 22px;
-      border:none;
-      border-radius:30px;
-      cursor:pointer;
-      font-weight:bold;
-      color:#fff;
-      background: var(--card);
-      transition:all 0.25s;
-      font-size:15px;
-    }
-    .btn:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-      box-shadow:0 4px 15px rgba(0,0,0,0.4);
-    }
-    .reco {
-      margin-top:30px;
-    }
-    .reco h3 {
-      margin-bottom:15px;
-      font-size:20px;
-      font-weight:bold;
-    }
-    .reco-list {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:15px;
-    }
-    .reco-card {
-      background: var(--card);
-      border-radius:10px;
-      overflow:hidden;
-      cursor:pointer;
-      transition:transform 0.25s, box-shadow 0.25s;
-    }
-    .reco-card:hover {
-      transform:translateY(-5px);
-      box-shadow:0 8px 25px rgba(0,0,0,0.6);
-    }
-    .reco-card img {width:100%;display:block;}
-    .reco-card .title {
-      padding:12px;
-      font-weight:bold;
-      font-size:15px;
-    }
-    footer {
-      text-align:center;
-      margin:35px 0 15px;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .tg-btn {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background: var(--primary);
-      color:#fff;
-      padding:12px 20px;
-      border-radius:30px;
-      font-weight:bold;
-      text-decoration:none;
-      font-size:15px;
-      transition:0.25s;
-    }
-    .tg-btn:hover {
-      transform:scale(1.07);
-      box-shadow:0 6px 20px rgba(0,0,0,0.6);
-    }
-    .tg-btn img {width:22px;height:22px;}
-  </style>
+  .title-bar {
+    width:100%;
+    max-width:960px;
+    background:#1c1c1c;
+    padding:18px 25px;
+    border-radius:12px;
+    text-align:center;
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:25px;
+    color:#ff9500;
+    box-shadow:0 6px 20px rgba(0,0,0,0.5);
+  }
+
+  .stream-section {
+    width:100%;
+    max-width:960px;
+    margin-bottom:30px;
+  }
+
+  .section-title {
+    color:#ff9500;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:12px;
+  }
+
+  .streams {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+  }
+
+  .stream-card {
+    background:#222;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.25s;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .stream-card img {
+    width:100%;
+    height:120px;
+    object-fit:cover;
+  }
+
+  .stream-card .stream-title {
+    padding:8px;
+    font-weight:700;
+    color:#ff9500;
+    font-size:14px;
+  }
+
+  .stream-card:hover {
+    transform:translateY(-3px);
+    box-shadow:0 6px 25px rgba(255,149,0,0.6);
+  }
+</style>
 </head>
 <body>
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-    apkmodderkings
-  </header>
 
-  <div class="app">
-    <div class="video-wrap">
-      <img class="poster" src="https://i.ibb.co/Rp8b3Hrj/x.jpg" alt="Poster">
+<div class="title-bar">Darkbrower</div>
+
+<div class="stream-section">
+  <div class="section-title">Available Streams</div>
+  <div class="streams">
+    <!-- HLS Streams -->
+    <div class="stream-card" onclick="openStream('https://dish.slivcdn.com/hls/live/2020591/TEN3HD/master_1300.m3u8')">
+      <img src="https://i.ibb.co/jPmh6t8n/x.jpg" alt="1300 kbps">
+      <div class="stream-title">1300 kbps</div>
+    </div>
+    <div class="stream-card" onclick="openStream('https://dish.slivcdn.com/hls/live/2020591/TEN3HD/master_3500.m3u8')">
+      <img src="https://i.ibb.co/jPmh6t8n/x.jpg" alt="3500 kbps">
+      <div class="stream-title">3500 kbps</div>
+    </div>
+    <div class="stream-card" onclick="openStream('https://dish.slivcdn.com/hls/live/2020591/TEN3HD/master_900.m3u8')">
+      <img src="https://i.ibb.co/jPmh6t8n/x.jpg" alt="900 kbps">
+      <div class="stream-title">900 kbps</div>
     </div>
 
-    <div class="controls">
-      <button class="btn" onclick="openStream('1080')">Hindi 1080p</button>
-      <button class="btn" onclick="openStream('720')">Hindi 720p</button>
+    <!-- WhatsApp Join Card -->
+    <div class="stream-card" onclick="window.open('https://whatsapp.com/channel/0029VbAvIUo2ZjCu4eWjOw1T','_blank')">
+      <img src="https://i.ibb.co/4g71rWSw/x.jpg" alt="WhatsApp">
+      <div class="stream-title">Join WhatsApp</div>
     </div>
-
-    <div class="reco">
-      <h3>Recommended</h3>
-      <div class="reco-list">
-        <div class="reco-card" onclick="openStream('1080')">
-          <img src="https://i.ibb.co/Rp8b3Hrj/x.jpg" alt="Poster">
-          <div class="title">Hindi — 1080p</div>
-        </div>
-        <div class="reco-card" onclick="openStream('720')">
-          <img src="https://i.ibb.co/Rp8b3Hrj/x.jpg" alt="Poster">
-          <div class="title">Hindi — 720p</div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <a href="https://telegram.me/apkmodderkings" target="_blank" class="tg-btn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-        Join Telegram
-      </a>
-    </footer>
   </div>
+</div>
 
-  <script>
-    const streams = {
-      "1080": "https://in-mc-fdlive.fancode.com/mumbai/136742_hindi_hls_03dea3461951169adfreeta-di_h264/1080p.m3u8",
-      "720":  "https://in-mc-fdlive.fancode.com/mumbai/136742_hindi_hls_03dea3461951169adfreeta-di_h264/720p.m3u8"
-    };
+<script>
+  function openStream(url) {
+    window.open(url, "_blank");
+  }
+</script>
 
-    function openStream(quality){
-      const url = streams[quality];
-      window.open(url, "_blank");
-    }
-  </script>
 </body>
 </html>
